@@ -118,6 +118,16 @@ public class OrderSubServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cart cart=(Cart) session.getAttribute("shopCart");
 		User user=(User) session.getAttribute("landing");
+		if(user == null) {
+			request.setAttribute("suberr", "请先登录再提交订单");
+			request.getRequestDispatcher(CART_PATH).forward(request, response);
+			return;
+		}
+		if(cart == null || cart.getMap() == null || cart.getMap().isEmpty()) {
+			request.setAttribute("suberr", "购物车为空，请先添加商品再提交订单");
+			request.getRequestDispatcher(CART_PATH).forward(request, response);
+			return;
+		}
 		String orderNum=RanUtil.getOrderNum();//生成的订单号
 		String orderDate=DateUtil.show();//生成订单日期
 		Order order=new Order();

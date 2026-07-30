@@ -62,7 +62,7 @@ public class CartServlet extends HttpServlet {
 	private void delItem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		int cakeId=Integer.parseInt(request.getParameter("id"));
 		Cart shopCart = (Cart) request.getSession().getAttribute("shopCart");
-		if(shopCart.getMap().containsKey(cakeId)) {
+		if(shopCart != null && shopCart.getMap().containsKey(cakeId)) {
 			shopCart.getMap().remove(cakeId);
 		}
 		response.sendRedirect("jsp/cake/cart.jsp");
@@ -74,6 +74,11 @@ public class CartServlet extends HttpServlet {
 		int cakeId=Integer.parseInt(request.getParameter("cakeId"));
 		int quantity=Integer.parseInt(request.getParameter("quantity"));
 		Cart shopCart = (Cart) request.getSession().getAttribute("shopCart");
+		if(shopCart == null || !shopCart.getMap().containsKey(cakeId)) {
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			response.getWriter().print("{}");
+			return;
+		}
 		CartItem item = shopCart.getMap().get(cakeId);
 		item.setQuantity(quantity);
 		JSONObject json=new JSONObject();

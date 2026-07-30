@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import com.mysql.jdbc.Connection;
 /**
  *
@@ -17,6 +18,7 @@ import com.mysql.jdbc.Connection;
  * 数据库工具类
  */
 public class DbUtil {
+    private static final Logger logger = Logger.getLogger(DbUtil.class);
 	public static String BASE_NAME="db";
 	private static String DB_DRIVER=PropertiesUtil.getValue("DB_DRIVER");
 	private static String DB_URL=PropertiesUtil.getValue("DB_URL");
@@ -26,8 +28,9 @@ public class DbUtil {
 	static{
 		try {
 			Class.forName(DB_DRIVER);
+            logger.info("数据库驱动加载成功");
 		} catch (Exception e) {
-			System.out.println("*****驱动加载失败*****");
+            logger.error("数据库驱动加载失败", e);
 		}
 	}
 
@@ -48,9 +51,10 @@ public class DbUtil {
 					pst.setObject(i+1, obj[i]);
 				}
 			}
-			row=pst.executeUpdate();	
+			row=pst.executeUpdate();
+            logger.debug("执行SQL更新: " + sql + "，影响行数: " + row);
 		} catch (SQLException e) {
-			e.printStackTrace();
+            logger.error("SQL执行异常: " + sql, e);
 		}finally {
 			dbClose(con, pst);
 			
@@ -92,9 +96,10 @@ public class DbUtil {
 					}
 					list.add(mso);
 				}
-			}	
+			}
+            logger.debug("执行SQL查询: " + sql + "，返回记录数: " + list.size());
 		} catch (Exception e) {
-			e.getStackTrace();
+            logger.error("SQL查询异常: " + sql, e);
 		}finally {
 			dbClose(con, pst, rs);
 		}	
@@ -110,9 +115,9 @@ public class DbUtil {
 		Connection conn=null;
 		try {
 			conn=(Connection) DriverManager.getConnection(DB_URL,DB_USERNAME, DB_PASSWORD);
-			
+            logger.info("数据库连接成功");
 		} catch (SQLException e) {
-			System.out.println(DateUtil.show()+">>数据库连接失败!"+e.getMessage());
+            logger.error("数据库连接失败!" + e.getMessage(), e);
 		}
 		return conn;
 				
@@ -130,9 +135,9 @@ public class DbUtil {
 			if(pstm!=null) {
 				pstm.close();
 			}
-			
+            logger.debug("数据库资源关闭完成");
 		} catch (Exception e) {
-			e.getStackTrace();
+            logger.error("关闭数据库资源异常", e);
 		}
 	}
 	/**
@@ -152,8 +157,9 @@ public class DbUtil {
 			if(rs!=null) {
 				rs.close();
 			}
+            logger.debug("数据库资源(包含结果集)关闭完成");
 		} catch (Exception e) {
-			e.getStackTrace();
+            logger.error("关闭数据库资源(包含结果集)异常", e);
 		}
 	}
 }

@@ -1,0 +1,39 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.iml
+
+# Eclipse / IDE project metadata
+cake_shop/.classpath
+cake_shop/.project
+cake_shop/.settings/
+
+# Build outputs
+cake_shop/build/
+**/target/
+*.class
+*.war
+*.ear
+
+# Local env / secrets overrides
+.env
+.env.*
+!.env.example
+
+# legacy-delegate runtime artifacts
+.delegate/
+
+# Local debug / one-off tests (not part of app)
+TestDB.java
+simple_db_test.ps1
+test_db_connect.ps1
+cake_shop/WebContent/test_db.jsp
+
+# Logs
+*.log
+logs/
