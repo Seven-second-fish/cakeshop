@@ -96,42 +96,71 @@ li {
   -moz-box-shadow: 0px 1px 12px 0px rgba(128, 113, 113, 0.3);
   box-shadow: 0px 1px 12px 0px rgba(128, 113, 113, 0.3);
   behavior: url(ie-css3.htc);
-  height:90px;
-  
-  
+  height: auto;
+  min-height: 90px;
+}
+.page-header {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: visible;
+  box-sizing: border-box;
 }
 header {
   position: relative;
-  width: 1260px;
-  height: 92px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 92px;
+  height: auto;
   z-index: 99;
-  margin-top: -40px;
-  margin-bottom:40px;}
+  margin-top: 0;
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+header > a {
+  flex: 0 0 auto;
+  line-height: 0;
+}
 header .nav-logo {
-  position: absolute;
-  left: 70px;
-  margin:20px 0px 0px 40px;
-  width: 110px;
-  height:70px;
-  
+  position: static;
+  display: block;
+  margin: 0;
+  width: 100px;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
 }
 header .nav-menu {
-  position: absolute;
-  /* left: 460px; */
-  left: 330px;
-  bottom: 25px;
+  position: static;
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 18px;
+  min-width: 0;
+  left: auto;
+  bottom: auto;
 }
 header .nav-menu .nav-a {
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 0;
   position: relative;
   text-align: center;
+  flex: 0 0 auto;
 }
 header .nav-menu .nav-a:nth-child(1) {
-  margin-left: 5px;
+  margin-left: 0;
 }
 header .nav-menu .nav-a:last-child {
-  margin-right: 20px;
+  margin-right: 0;
 }
 header .nav-menu .nav-a span {
   display: block;
@@ -163,31 +192,39 @@ header .nav-menu .nav-a.active span:nth-child(2):after {
   background-color: #d3b145;
 }
 header .nav-cut-line {
-  position: absolute;
-  /* right: 250px; */
- /*  right: 310px; */
-  right:400px;
-  bottom: 25px;
+  position: static;
+  flex: 0 0 auto;
+  align-self: center;
+  right: auto;
+  bottom: auto;
   width: 3px;
-  height: 40px;
+  height: 36px;
 }
 header .header-controller {
-  position: absolute;
-  right:-60px;
-  right: 0px;
-  bottom: 25px;
-  height: 55px;
-  line-height: 66px;
-  padding-top: 0px;
+  position: static;
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 14px;
+  right: auto;
+  bottom: auto;
+  height: auto;
+  line-height: 1.2;
+  padding-top: 0;
   font-size: 0;
+  max-width: 42%;
+  min-width: 0;
 }
 header .header-controller .header-controller-login,
 header .header-controller .header-controller-register,
 header .header-controller .header-controller-position,
 header .header-controller .header-controller-cart {
   display: inline-block;
-  margin-right: 25px;
+  margin-right: 0;
   cursor: pointer;
+  vertical-align: middle;
 }
 header .header-controller .header-controller-login:last-child,
 header .header-controller .header-controller-register:last-child,
@@ -240,7 +277,40 @@ header .header-controller .header-controller-login .icon-down {
   height: 9px;
 }
 
-header .header-controller-position:hover .area-list{ display: block}
+header .header-controller .header-controller-position .area-list,
+header .header-controller .header-controller-login .area-list,
+header .header-controller .header-controller-position .person-center-list,
+header .header-controller .header-controller-login .person-center-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 85px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 15px;
+  color: #333333;
+  z-index: 200;
+  -webkit-box-shadow: 0px 1px 12px 0px rgba(128, 113, 113, 0.3);
+  -moz-box-shadow: 0px 1px 12px 0px rgba(128, 113, 113, 0.3);
+  box-shadow: 0px 1px 12px 0px rgba(128, 113, 113, 0.3);
+  behavior: url(ie-css3.htc);
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+header .header-controller-position:hover .area-list,
+header .header-controller .header-controller-position:hover .area-list,
+header .header-controller .header-controller-position .area-list:hover {
+  display: block;
+}
+header .header-controller .header-controller-position .area-list.is-selected-hide {
+  display: none !important;
+}
+header .header-controller .header-controller-position .area-list .area-item {
+  cursor: pointer;
+  user-select: none;
+}
 header .header-controller .header-controller-position .area-list .area-item:hover,
 header .header-controller .header-controller-login .area-list .area-item:hover,
 header .header-controller .header-controller-position .person-center-list .area-item:hover,
@@ -271,7 +341,6 @@ header .header-controller .header-controller-login .person-center-list .try-eat-
 }
 header .header-controller .header-controller-position .area-list,
 header .header-controller .header-controller-login .area-list {
-  display:none;
   right: -4px;
 }
 header .header-controller .header-controller-position .person-center-list,
@@ -283,15 +352,33 @@ header .header-controller .header-controller-login:hover .login-center-list {
 }
 header .header-controller .header-controller-cart {
   text-align: right;
-  magrin-right:-10px;
+  margin-right: 0;
 }
 header .header-controller .header-controller-cart .icon {
   width: 23px;
   height: 20px;
 }
 
-#onlinepay{
-	
+/* 窄屏：导航整行落下，避免被右侧区盖住 */
+@media screen and (max-width: 992px) {
+  .header-shadow {
+    height: auto;
+  }
+  header {
+    flex-wrap: wrap;
+  }
+  header .nav-cut-line {
+    display: none;
+  }
+  header .header-controller {
+    max-width: none;
+    margin-left: auto;
+  }
+  header .nav-menu {
+    flex: 1 1 100%;
+    order: 3;
+    justify-content: flex-start;
+  }
 }
 
 	

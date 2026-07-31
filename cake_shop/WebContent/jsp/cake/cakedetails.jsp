@@ -13,6 +13,7 @@
 <head>
 	<base href="${basePath}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BON CAKE</title>
 	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -55,7 +56,7 @@
 </head>
 <body>
 
-	<div class="container-fullid">
+	<div class="container-fluid">
 		<%@include file="header.jsp" %>
 		<div class="wrapper">
 			<!-- main start -->
@@ -100,7 +101,7 @@
 								</tr>
 							</table>
 						<p class="buy_pro">
-								<a class="btn" style="border:1px solid black;" href="#">立即购买</a>
+								<button type="button" class="btn" style="border:1px solid black;" onclick="buyNow(${cakeInfo.cakeId})">立即购买</button>
 								<button type="button" class="btn" style="background:#333333;color:#fff;" onclick="addToCart(${cakeInfo.cakeId})" data-toggle="modal" data-target=".bs-example-modal-sm">
 								<img class="cart-icon" src="images/cake/btn-cart-icon.png" alt="">
 								加入购物车</button>

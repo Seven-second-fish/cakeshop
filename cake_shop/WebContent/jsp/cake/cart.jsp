@@ -14,6 +14,7 @@
 <head>
 <base href="${basePath}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>购物车</title>
 <link rel="stylesheet" href="bs/css/bootstrap.css">
 <script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -26,7 +27,7 @@
 <script type="text/javascript" src="js/cake/user_reg_login.js"></script>
 <style type="text/css">
 .wrapper {
-	minheight: 400px;
+	min-height: 400px;
 }
 
 .wrapper .main {
@@ -53,7 +54,7 @@
 			alert("${suberr}")
 		</script>
 	</c:if>
-	<div class="container-fullid">
+	<div class="container-fluid">
 		<%@include file="header.jsp" %>
 		<div class="wrapper">
 			<!-- main start -->
@@ -86,11 +87,11 @@
 										<td style="padding:50px 0 50px 0;">￥<i>${i.value.cake.price}</i></td>
 										<td style="padding:50px 0 50px 0;">
 											<div class="spinner">
-												<span onclick="addval(this,${i.key})"
+												<span onclick="decreaseQty(this,${i.key})"
 													class="btn btn-xs btn-default"> <b>-</b>
 												</span> 
 												<input type="text" value="${i.value.quantity}" onchange="changeinput(this,${i.key})" >
-												<span onclick="cutval(this,${i.key})"
+												<span onclick="increaseQty(this,${i.key})"
 													class="btn btn-xs btn-default"> <b>+</b>
 												</span>
 											</div>
@@ -230,15 +231,15 @@
 		]);
 		
 	
-	//增减按钮处理
-	  function addval(obj,id) {  
+	// 数量步进：decreaseQty 减 1，increaseQty 加 1（原 addval/cutval 命名颠倒但逻辑正确）
+	  function decreaseQty(obj,id) {  
 		  var input=$(obj).parent().find("input");
 		  if(input.val()>1){
 			  input.val(parseInt(input.val()) - 1); 
 			  changeQ(obj,id,input.val());
 			}
 		 }
-	  function cutval(obj,id){
+	  function increaseQty(obj,id){
 		  var input=$(obj).parent().find("input");
 		  if(input.val()<999){
 			  input.val(parseInt(input.val()) + 1); 

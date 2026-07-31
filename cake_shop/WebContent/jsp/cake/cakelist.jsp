@@ -13,6 +13,7 @@
 <head>
 	<base href="${basePath}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>购物车</title>
 	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -25,7 +26,7 @@
 </head>
 <body>
 
-	<div class="container-fullid">
+	<div class="container-fluid">
 		<%@include file="header.jsp" %>
 		
 		<div class="wrapper">
@@ -46,12 +47,12 @@
 							</div>
 						</div>
 					</div>
-						<div class="search col-md-4 col-md-offset-6" style="float:right, margin-right:-80px;">
+						<div class="search col-md-4 col-md-offset-6" style="float:right; margin-right:-80px;">
 							<div class="input-group">
 								<form action="CakeList2" method="get">
 			     	 				<input style="float: left;width: 160px;border-radius:12px;" type="text" class="form-control" name="seachname" placeholder="输入要搜索商品">
 			       					&nbsp;&nbsp;&nbsp;
-			       					<span type="submit" style="float: left;width: 40px;border:none;" class="btn btn-default"  ><img class="icon" src="images/cake/search-icon.png" alt=""></span>
+			       					<button type="submit" class="btn btn-default" style="float: left;width: 40px;border:none;"><img class="icon" src="images/cake/search-icon.png" alt="搜索"></button>
 								</form>
 	   						</div>
 						</div> 
@@ -91,10 +92,10 @@
 															<span>价格：￥${i.price }</span>
 															
 															<div style="margin:35px;">
-																<button class="btn-xs" onclick="addToCart(${i.cakeId})" href="javascript:void(0)" data-toggle="modal" data-target=".bs-example-modal-sm">
+																<button class="btn-xs" type="button" onclick="buyNow(${i.cakeId})">
 																<img class="cart-icon" src="images/cake/buy-icon.jpg" alt="">立即购买
 																</button>
-																<button class="btn-xs" onclick="addToCart(${i.cakeId})" href="javascript:void(0)" data-toggle="modal" data-target=".bs-example-modal-sm">
+																<button class="btn-xs" type="button" onclick="addToCart(${i.cakeId})" data-toggle="modal" data-target=".bs-example-modal-sm">
 																<img class="cart-icon" src="images/cake/shopping-icon.jpg" alt="">加入购物车
 																</button>
 															</div>

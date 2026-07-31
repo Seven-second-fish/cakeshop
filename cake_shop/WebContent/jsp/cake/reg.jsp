@@ -13,6 +13,7 @@
 <head>
 	<base href="${basePath}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BON CAKE</title>
 	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -27,13 +28,6 @@
 	
 </head>
 <body>
-<c:if test="${!empty infoList}">
-	<c:forEach items="${infoList}" var="i">
-		<script type="text/javascript">
-			alert("${i}")
-		</script>
-	</c:forEach>
-</c:if>
 	<div>
 		<%@include file="header.jsp" %>
 		<div class="wrapper" style="margin-top:-20px;background-repeat:no-repeat;background-size:cover;">
@@ -43,6 +37,13 @@
 				<div id="myTabContent" class="tab-content">
 					<div id="tab_reg">
 						<h4>用户注册</h4>
+						<c:if test="${!empty infoList}">
+							<div class="alert alert-danger" role="alert" style="margin-bottom:15px;">
+								<c:forEach items="${infoList}" var="i">
+									<p style="margin:0;">${i}</p>
+								</c:forEach>
+							</div>
+						</c:if>
 						<form id="regForm" action="UserServlet?action=reg" method="post" class="form-horizontal">
 							<div class="form-group">
 								<label for="userName" class="col-md-2  control-label">用户名：</label>

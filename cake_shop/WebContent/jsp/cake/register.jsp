@@ -26,13 +26,24 @@
     	#head {
     	height: 100px;
     	}
+
+    	#formError {
+    		display: none;
+    		color: #a94442;
+    		background-color: #f2dede;
+    		border: 1px solid #ebccd1;
+    		padding: 8px 12px;
+    		margin: 0 40px 15px;
+    		text-align: left;
+    	}
     </style>
     
    <script type="text/javascript">
-    function checklogin()                       
+    function checklogin()
     {
-       
-        
+        var err = document.getElementById("formError");
+        err.style.display = "none";
+        err.innerHTML = "";
         if((myform.username.value!=""))
         {
             if((myform.password.value!=""))
@@ -41,13 +52,15 @@
             }
             else
             {
-                alert("用户名或密码不能为空");
+                err.innerHTML = "用户名或密码不能为空";
+                err.style.display = "block";
                 return false
                 }
             }
         else
         {
-            alert("用户名或密码不能为空");
+            err.innerHTML = "用户名或密码不能为空";
+            err.style.display = "block";
             return false
             
         }
@@ -81,6 +94,7 @@
 </div>
 <div id="userlogin">
     <h3>用户注册</h3>
+    <div id="formError" role="alert"></div>
 
     <form action="${pageContext.request.contextPath }/registerServlet" method="post" name="myform" onSubmit="return checklogin()">
     <table>

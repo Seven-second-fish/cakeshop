@@ -16,6 +16,7 @@
 <head>
 	<base href="${basePath}"><!-- 设置基础路径为basePash,依此延伸 -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BON CAKE</title>
 	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -30,13 +31,6 @@
 	
 </head>
 <body>
-<c:if test="${!empty infoList}">
-	<c:forEach items="${infoList}" var="i">
-		<script type="text/javascript">
-			alert("${i}")
-		</script>
-	</c:forEach>
-</c:if>
 	<div>
 		<%@include file="header.jsp" %>
 		<div class="wrapper" style="margin-top:-20px;background-repeat:no-repeat;background-size:cover;">
@@ -45,6 +39,13 @@
 					<!-- 登录表单 -->
 					<div id="tab_login" >
 						<h4>用户登录</h4>
+						<c:if test="${!empty infoList}">
+							<div class="alert alert-danger" role="alert" style="margin-bottom:15px;">
+								<c:forEach items="${infoList}" var="i">
+									<p style="margin:0;">${i}</p>
+								</c:forEach>
+							</div>
+						</c:if>
 						<form id="loginForm" action="UserServlet?action=login" method="post" class="form-horizontal">
 							<div class="form-group">
 								<label for="l_userName" class="col-md-3 control-label">用户名：</label>
@@ -88,7 +89,7 @@
 								</div>
 							</div> -->
 							<div class="form-group">
-								<label class="col-md-2 control-label " style="magin-left:20px;float:right;'">
+								<label class="col-md-2 control-label " style="margin-left:20px;float:right;">
 									<!-- <a href="/cake_shop/WebContent/jsp/admin/login2.jsp" style="background:#d3b145;color:#fff;;" class="btn btn-sm">管理员</a> -->
 									<input type="button" onclick='location.href=("login2.jsp")' value="管理员" style="background:#d3b145;color:#fff;;" class="btn btn-sm"/>
 								</label>

@@ -14,6 +14,7 @@
 <head>
 <base href="${basePath}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>确认订单</title>
 <link rel="stylesheet" href="bs/css/bootstrap.css">
 <script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -69,7 +70,7 @@
 
 </head>
 <body>
-	<div class="container-fullid">
+	<div class="container-fluid">
 		<%@include file="header.jsp" %>
 		<div class="wrapper">
 			<div class="main container">

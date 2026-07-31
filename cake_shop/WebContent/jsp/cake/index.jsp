@@ -13,6 +13,7 @@
 <head>
 	<base href="${basePath}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BON CAKE</title>
 	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
@@ -33,7 +34,7 @@
 </head>
 <body>
 
-	<div class="container-fullid">
+	<div class="container-fluid">
 		<%@include file="header.jsp" %>
 		<div class="wrapper">
 			<!-- banner start -->
@@ -99,7 +100,7 @@
 								<form action="CakeList2" method="get">
 			     	 				<input style="float: left;width: 160px;border-radius:12px;" type="text" class="form-control" name="seachname" placeholder="输入要搜索商品">
 			       					&nbsp;&nbsp;&nbsp;
-			       					<span type="submit" style="float: left;width: 40px;border:none;" class="btn btn-default"  ><img class="icon" src="images/cake/search-icon.png" alt=""></span>
+			       					<button type="submit" class="btn btn-default" style="float: left;width: 40px;border:none;"><img class="icon" src="images/cake/search-icon.png" alt="搜索"></button>
 								</form>
 	   						</div>
 						</div> 

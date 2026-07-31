@@ -7,7 +7,7 @@
            		 </div>
                 <div class="col-md-2 contact">
                 	<div class="col-md-8">
-                		<a href="#">联系我们</a> 
+                		<a href="javascript:void(0)" title="即将上线">联系我们</a> 
 					<div class="footer-center-en">Contact us</div>
                 	</div>
                 	<div class="col-md-4">|</div>
@@ -15,22 +15,15 @@
            		 </div>
            		 <div class="col-md-2 contact">
 					<div class="col-md-8">
-                		<a href="#">订购帮助 </a> 
-					<div class="footer-center-en">Purchasing Helper us</div>
+                		<a href="javascript:void(0)" title="即将上线">订购帮助</a> 
+					<div class="footer-center-en">Purchasing Help</div>
                 	</div>
                 	<div class="col-md-4">|</div>
            		 </div>
            		  <div class="col-md-2 contact">
 					<div class="col-md-8">
-                		<a href="#">品牌故事</a> 
+                		<a href="javascript:void(0)" title="即将上线">品牌故事</a> 
 					<div class="footer-center-en">Brand story</div>
-                	</div>
-                	<div class="col-md-4">|</div>
-           		 </div>
-           		  <div class="col-md-2 contact">
-					<div class="col-md-8">
-                		<a href="#">订购帮助</a> 
-					<div class="footer-center-en">Purchasing Helper</div>
                 	</div>
                 	<div class="col-md-4">|</div>
            		 </div>
